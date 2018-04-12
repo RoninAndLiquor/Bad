@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+<mapper	namespace="high.mapper.EmpMapper">
+
+	<select id="queryEmpAll" resultType="Emp">
+		SELECT
+			h.emp_jobnum empJobnum,
+			h.emp_name empName,
+			h.dept_id deptId,
+			h.emp_phone empPhone,
+			h.post_id postId,
+			h.emp_remark empRemark,
+			h.title_id titleId,
+			h.emp_iden empIden,
+			h.emp_state empState 
+		FROM hos_emp h
+		WHERE 1=1
+	</select>
+	
+	<select id="queryEmpByParam" resultType="Emp" parameterType="map">
+		SELECT
+			h.emp_jobnum empJobnum,
+			h.emp_name empName,
+			h.dept_id deptId,
+			h.emp_phone empPhone,
+			h.post_id postId,
+			h.emp_remark empRemark,
+			h.title_id titleId,
+			h.emp_iden empIden,
+			h.emp_state empState 
+		FROM hos_emp h
+		WHERE 1=1
+		<if test="empJobnum!=null and empJobnum!=''">
+			AND h.emp_jobnum = #{empJobnum}
+		</if>
+		<if test="empName!=null and empName!=''">
+			AND h.emp_name = ${empName}
+		</if>
+		<if test="deptId!=null and deptId!=''">
+			AND h.dept_id = ${deptId}
+		</if>
+		<if test="empPhone!=null and empPhone!=''">
+			AND h.emp_phone = #{empPhone}
+		</if>
+		<if test="postId!=null and postId!=''">
+			AND h.post_id = #{postId}
+		</if>
+		<if test="titleId!=null and titleId!=''">
+			AND h.title_id = #{titleId}
+		</if>
+		<if test="empIden!=null and empIden!=''">
+			AND h.emp_iden = #{empIden}
+		</if>
+		<if test="empState!=null and empState!=''">
+			AND h.emp_state = #{empState}
+		</if>
+		<if test="empRemark!=null and empRemark!=''">
+			AND h.emp_remark = #{empRemark}
+		</if>
+	</select>
+	
+	<select id="queryById" resultType="Emp" parameterType="String">
+		SELECT
+			h.emp_jobnum empJobnum,
+			h.emp_name empName,
+			h.dept_id deptId,
+			h.emp_phone empPhone,
+			h.post_id postId,
+			h.emp_remark empRemark,
+			h.title_id titleId,
+			h.emp_iden empIden,
+			h.emp_state empState 
+		FROM hos_emp h
+		WHERE 1=1
+		AND h.emp_jobnum = ${_parameter}
+	</select>
+	
+	<insert id="insert" parameterType="map"  useGeneratedKeys="true" keyProperty="empJobnum">
+		INSERT INTO hos_emp
+		(emp_jobnum,emp_name,dept_id,emp_phone,post_id,emp_remark,title_id,emp_iden,emp_state)
+		VALUES
+		(
+			#{empJobnum},
+			#{empName},
+			#{deptId},
+			#{empPhone},
+			#{postId},
+			#{empReamrk},
+			#{titleId},
+			#{empIden},
+			#{empState}
+		)
+	</insert>
+	<update id="updateEmp" parameterType="map">
+		update hos_emp
+		<set>
+			<if test="empName!=null and empName!=''">
+				emp_name = #{empName},
+			</if>
+			<if test="deptId!=null and deptId!=''">
+					dept_id = #{deptId},
+			</if>
+			<if test="empPhone!=null and empPhone!=''">
+					emp_phone = #{empPhone},
+			</if>
+			<if test="postId!=null and postId!=''">
+					post_id = #{postId},
+			</if>
+			<if test="titleId!=null and titleId!=''">
+					title_id = #{titleId},
+			</if>
+			<if test="empIden!=null and empIden!=''">
+					emp_iden = #{empIden},
+			</if>
+			<if test="empState!=null and empState!=''">
+					emp_state = #{empState}
+			</if>
+		</set>
+		WHERE 
+		emp_jobnum = #{empJobnum}
+	</update>
+</mapper>

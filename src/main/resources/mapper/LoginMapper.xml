@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace= "high.mapper.LoginMapper">
+
+	<insert id="insert" parameterType="map">
+		INSERT INTO hos_login(login_jobnum,login_pass)
+		VALUES (#{loginJobnum},#{loginPass})
+	</insert>
+	
+	<select id="queryByNameAndPwd" resultType="high.entity.Login" parameterType="map">
+		SELECT login_jobnum loginJobnum,login_pass loginPass 
+		FROM hos_login
+		WHERE login_jobnum = #{userName}
+		AND login_pass = #{password}
+	</select>
+</mapper>
