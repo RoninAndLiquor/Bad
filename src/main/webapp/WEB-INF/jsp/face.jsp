@@ -67,6 +67,9 @@
 			<input class="box1" type="checkbox"/>
 			<input class="box1" type="checkbox"/>
 		</div>
+		<div>
+			<p>扣钱：<input type="text" id="amount" placeholder="请输入金额"><button onclick="createticket()">开始扣钱</button></p>
+		</div>
 	</div>
 	<!-- <div id="buttomdiv">
 		<p style="font-size:10px;">隐私声明|服务条款</p>
@@ -253,8 +256,71 @@
 				"3":"6666"
 		}];
 		for(var i=0;i<obj.length;i++){
-			alert(obj[i]["2"]);
+			//alert(obj[i]["2"]);
 		}
+	}
+	function createticket(){
+		var M = {};
+		var money = $("#amount").val();
+		var reg = /^[0-9]*$/;
+		if(reg.test(money)){
+			if(money>0){
+				$.ajax({
+					url:"ticket.json",
+					type:"post",
+					dataType:"json",
+					async:false,
+					success:function(data){
+						if(data>0){
+							withdraw(money);
+						}else{
+							M.dialog12 = jqueryAlert({
+								'icon'    : '../img/warning.png',
+								'content' : '请求错误正在重试',
+								'closeTime' : 200,
+							});
+							createticket();
+						}
+					},error:function(data){
+						M.dialog12 = jqueryAlert({
+							'icon'    : '../img/warning.png',
+							'content' : '请求错误正在重试',
+							'closeTime' : 200,
+						});
+						createticket();
+					}
+				});
+			}else{
+				M.dialog12 = jqueryAlert({
+					'icon'    : '../img/warning.png',
+					'content' : '金额必须大于0',
+					'closeTime' : 700,
+				});
+			}
+		}else{
+			M.dialog12 = jqueryAlert({
+				'icon'    : '../img/error.png',
+				'content' : '格式有误，请检查',
+				'closeTime' : 700,
+			});
+		}
+	}
+	function withdraw(money){
+		var M = {};
+		$.ajax({
+			url:"put.json",
+			type:"put",
+			data:{sum:money},
+			dataType:"json",
+			async:false,
+			success:function(data){
+				M.dialog12 = jqueryAlert({
+					'icon'    : '../img/right.png',
+					'content' : '取钱成功',
+					'closeTime' : 500,
+				});
+			}
+		});
 	}
 </script>
 </html>

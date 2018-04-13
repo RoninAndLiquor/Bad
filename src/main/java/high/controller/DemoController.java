@@ -69,5 +69,21 @@ public class DemoController {
 		map.put("NO.3", "THREE IS GONE");
 		return map;
 	}
+	private int amount = 100000;
+	Integer result = 0;
+	@RequestMapping(value = "ticket.json",method=RequestMethod.POST)
+	@ResponseBody
+	public Integer createTicket(){
+		result = (int)(Math.random()*100000);
+		return result;
+	}
+	
+	@RequestMapping(value="put.json",method=RequestMethod.PUT)
+	@ResponseBody
+	public boolean putTest(Integer sum){
+		amount-=sum;
+		System.out.println(amount);
+		return true;	
+	}
 	
 }
