@@ -99,7 +99,8 @@
 <script type="text/javascript">
 	window.onload = init;
 	function init(){
-		jsonToObj();
+		//jsonToObj();
+		strTest();
 	}
 	$(".box1").attr("checked",true);
 	console.log($.min(4,15));
@@ -319,6 +320,30 @@
 					'content' : '取钱成功',
 					'closeTime' : 500,
 				});
+			}
+		});
+	}
+	
+	function strTest(){
+		var M = {};
+		$.ajax({
+			url:"strTest.json",
+			type:"POST",
+			dataType:"text",
+			success:function(data){
+				if(data=="OK"){
+					M.dialog12 = jqueryAlert({
+						'icon'    : '../img/right.png',
+						'content' : '成功',
+						'closeTime' : 500,
+					});
+				}else{
+					M.dialog12 = jqueryAlert({
+						'icon'    : '../img/error.png',
+						'content' : '失败',
+						'closeTime' : 500,
+					});
+				}
 			}
 		});
 	}

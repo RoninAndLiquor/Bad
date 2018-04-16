@@ -85,5 +85,13 @@ public class DemoController {
 		System.out.println(amount);
 		return true;	
 	}
+	@RequestMapping(value="strTest.json")
+	@ResponseBody
+	public String strTest(){
+		if((int)(Math.random()*100)%2==0){
+			return "OK";
+		}
+		return "ERROR";
+	}
 	
 }
