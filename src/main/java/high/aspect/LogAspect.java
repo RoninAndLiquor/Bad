@@ -140,9 +140,9 @@ public class LogAspect {
      * @Date: 2017年12月26日 下午5:15:58
      */
     @AfterThrowing(value = "pointcut()",throwing = "exception")  
-    public void doAfterThrowingAdvice(JoinPoint joinPoint,Exception exception){  
+    public void doAfterThrowingAdvice(JoinPoint joinPoint,Throwable exception){  
         //目标方法名：  
-        System.out.println(joinPoint.getSignature().getName());  
+        System.out.println(joinPoint.getSignature().getName()+"  *****  "+exception.getMessage());  
         if(exception instanceof NullPointerException){  
             System.out.println("发生了空指针异常!!!!!");  
         }  
@@ -185,7 +185,8 @@ public class LogAspect {
             Object obj = proceedingJoinPoint.proceed();//调用执行目标方法  
             return obj;  
         } catch (Throwable throwable) {  
-            throwable.printStackTrace();  
+            //throwable.printStackTrace();
+        	LOG.info(getDateStr()+"出现异常了："+throwable.getMessage());
         }  
         return null;  
     }  

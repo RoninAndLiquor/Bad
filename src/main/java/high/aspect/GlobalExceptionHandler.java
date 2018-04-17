@@ -19,9 +19,10 @@ public class GlobalExceptionHandler {
 	@AfterThrowing(pointcut="execute()",throwing="e")
 	public void exceptionHandle(JoinPoint jp,Throwable e){
 		if(e!=null){
-		Logger logger = LoggerFactory.getLogger(jp.getSignature().getClass());
-		logger.error(e.getMessage(),e);
+			Logger logger = LoggerFactory.getLogger(jp.getSignature().getClass());
+			logger.error(e.getMessage(),e);
 		}
+		System.out.println("**** Exception **** "+e.getMessage());
 	}
 	
 }

@@ -62,11 +62,12 @@ public class DemoController {
 	}
 	@RequestMapping(value="exception.json",produces="application/json;charset=iso-8859-1")
 	@ResponseBody
-	public Map<String,Object> exception(){
+	public Map<String,Object> exception(String str){
 		Map<String,Object> map = new LinkedHashMap<String,Object>();
 		map.put("NO.1", "这里是中文");
 		map.put("NO.2", "SECOND COMING");
 		map.put("NO.3", "THREE IS GONE");
+		str.replace("ddd", "ds");
 		return map;
 	}
 	private int amount = 100000;
