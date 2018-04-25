@@ -252,6 +252,11 @@
     	<artifactId>hadoop-core</artifactId>
     	<version>1.0.0</version>
     </dependency>
+    <dependency>
+    	<groupId>net.sourceforge.pingyin4j</groupId>
+    	<artifactId>pinyin4j</artifactId>
+    	<version>2.5.0</version>
+    </dependency>
 	</dependencies>
 	<build>
 		<finalName>high-0.0.1-SNAPSHOT</finalName>
