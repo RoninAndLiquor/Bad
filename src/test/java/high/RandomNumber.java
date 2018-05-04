@@ -30,6 +30,14 @@ public class RandomNumber {
 				}
 			}
 		}
+		for(int i=0;i<100;i++){
+			int num = (int) ((Math.random() * 9 +1) * 100000);
+			System.out.println(num);
+		}
+		char a = 'A';
+		char z = 'Z';
+		System.out.println((int)a);
+		System.out.println((int)z);
 	}
 	
 }
