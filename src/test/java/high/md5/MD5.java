@@ -20,7 +20,6 @@ public class MD5 {
 			System.out.println(decode2);
 			/*MessageDigest digest = MessageDigest.getInstance("md5");
 			String salt = "jsfwlq";˯
-			String password = "wolftooth..0";ɲɻɮɿʀɴ
 			String str = password+salt;˯˰˱˲˳˴˵˶˷˸˹˺˻˼˽˾˿̴̵̶̷̸̡̢̧̨̛̖̗̘̙̜̝̞̟̠̣̤̥̦̩̪̫̬̭̮̯̰̱̲̳̹̺̻̼͇͈͉͍͎̀́̂̃̄̅̆̇̈̉̊̋̌̍̎̏̐̑̒̓̔̽̾̿̀́͂̓̈́͆͊͋͌̕̚ͅ͏͓͔͕͖͙͚͐͑͒͗͛ͣͤͥͦͧͨͩͪͫͬͭͮͯ͘͜͟͢͝͞͠͡
 			String md5DigestAsHex = DigestUtils.md5DigestAsHex(str.getBytes());
 			System.out.println(md5DigestAsHex);
@@ -31,9 +30,10 @@ public class MD5 {
 			System.out.println(saltMD5);
 			String getconvertMD5 = MD5Utils.getStrMD5(saltMD5);
 			System.out.println(getconvertMD5);*/
-			/*for(int i=75000;i<76000;i++){
+			for(int i=75776;i<=76031;i++){
 				System.out.print((char)i);
-			}*/
+			}
+			//System.out.println((char)16);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

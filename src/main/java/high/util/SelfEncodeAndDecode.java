@@ -1,5 +1,7 @@
 package high.util;
 
+import java.util.Random;
+
 public class SelfEncodeAndDecode {
 
 	public static String encode(String pwd,String salt){
@@ -12,12 +14,21 @@ public class SelfEncodeAndDecode {
 		for(int i=0;i<charArray2.length;i++){
 			mul+=(int)charArray2[i];
 		}
-		mul = mul*20;
+		mul = (int) (mul*12.02);
 		StringBuffer sb = new StringBuffer();
 		int l[] = new int[charArray.length];
 		for(int i=0;i<charArray.length;i++){
 			l[i] = charArray[i]+mul;
 			sb.append((char)l[i]);
+		}
+		if(sb.length()<16){
+			sb.append((char)(mul+16));
+			Random random = new Random();
+			if(sb.length()<16){
+				for(int i=sb.length();i<16;i++){
+					sb.append((char)(random.nextInt(250)+75776));
+				}
+			}
 		}
 		return sb.toString();
 	}
@@ -31,10 +42,22 @@ public class SelfEncodeAndDecode {
 		for(int i=0;i<charArray2.length;i++){
 			mul+=(int)charArray2[i];
 		}
+		mul = (int) (mul*12.02);
 		StringBuffer sb = new StringBuffer();
 		char[] charArray = str.toCharArray();
+		Integer flag = null;
 		for(int i=0;i<charArray.length;i++){
-			sb.append((char)(charArray[i]-mul*20));
+			if((charArray[i]-mul)==-65520){
+				flag = i;
+				break;
+			}
+		}
+		if(flag!=null){
+			str = str.substring(0, flag);
+		}
+		char[] strArr = str.toCharArray();
+		for(int i=0;i<strArr.length;i++){
+			sb.append((char)(charArray[i]-mul));
 		}
 		return sb.toString();
 	}
