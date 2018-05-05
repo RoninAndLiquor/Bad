@@ -252,11 +252,11 @@
     	<artifactId>hadoop-core</artifactId>
     	<version>1.0.0</version>
     </dependency>
-    <dependency>
+<!--     <dependency>
     	<groupId>net.sourceforge.pingyin4j</groupId>
     	<artifactId>pinyin4j</artifactId>
     	<version>2.5.0</version>
-    </dependency>
+    </dependency> -->
     <dependency>
     	<groupId>net.iharder</groupId>
     	<artifactId>base64</artifactId>
