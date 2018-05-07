@@ -15,6 +15,7 @@ public class SelfEncodeAndDecode {
 			mul+=(int)charArray2[i];
 		}
 		mul = (int) (mul*12.02);
+		System.out.println("mul="+mul);
 		StringBuffer sb = new StringBuffer();
 		int l[] = new int[charArray.length];
 		for(int i=0;i<charArray.length;i++){
@@ -47,11 +48,13 @@ public class SelfEncodeAndDecode {
 		char[] charArray = str.toCharArray();
 		Integer flag = null;
 		for(int i=0;i<charArray.length;i++){
-			if((charArray[i]-mul)==-65520){
+			System.out.print((int)charArray[i]+" ");
+			if((charArray[i]-mul)==-65520||(charArray[i]-mul)==16){
 				flag = i;
 				break;
 			}
 		}
+		System.out.println();
 		if(flag!=null){
 			str = str.substring(0, flag);
 		}
